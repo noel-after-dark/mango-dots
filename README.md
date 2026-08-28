@@ -2,6 +2,8 @@
 
 todo list
 
+expand animation
+
 wallpaper picker script
 
 notification module
