@@ -1,6 +1,7 @@
 # My MangoWC Rice
 
 todo list
+
 wallpaper picker
 notification module
 wallhaven widgets maybe if i'm smart enough to make that
