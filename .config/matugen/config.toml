@@ -1,0 +1,218 @@
+[config]
+# If set to enabled, it will check for updates when you run the matugen command, notifying you that an update is avaiable.
+# WARNING: Matugen needs to be compiled with the `update-informer` feature for this to work.
+version_check = false
+
+# The color which should be used as the source_color if no good color was found from an image.
+# Can be defined in any css format.
+# The cli flag will override this if used.
+fallback_color = "#ffbf9b"
+
+# Which color to choose if multiple good colors were found from an image.
+# choices: [darkness, lightness, saturation, less-saturation, value, closest-to-fallback]
+# The cli flag will override this if used.
+prefer = "closest-to-fallback"
+
+# Enables caching which will cache the colorscheme, custom colors, etc. into a cache folder located in
+# Windows: C:\Users\user\AppData\Roaming\InioX\matugen\cache\images\<file>
+# Linux: $XDG_CACHE_HOME/matugen/<file> or $HOME/.cache/matugen/images/<file>
+# MacOS: $HOME/Library/Caches/matugen/images/<file>
+# The file follows this naming: <image_name>.<image_extension>.<image_hash>.json
+# For example: testimage.png.0cfd2d624b3d09bf6246b7be9ca79e207e7aa1189d961d44949628b99811bb9d.json
+# You can modify the cache and it will then be loaded when using the same image.
+# The colors are defined using the #RRGGBBAA format.
+caching = false
+
+# Changing the syntax
+# Expr is for keywords like {{ <keyword> }}
+expr_prefix = "{{"
+expr_postfix = "}}"
+
+# Block is for stuff like for loops etc.
+block_prefix = "<*"
+block_postfix = "*>"
+
+# Imports json files just like `--import-json` does.
+# Relative paths will be resolved from the path `config.toml` is in.
+# import_json_files = ["./custom3.json"]
+
+# Defaults to the contrast from CLI if unspecified.
+# Value from -1 to 1.
+# -1 represents minimum contrast, 0 represents standard (i.e. the design as spec'd),
+# and 1 represents maximum contrast.
+contrast = 1
+
+# Will set the source color index just like the `--source-color-index` CLI flag (0 - 4).
+# 0 = most dominant, 1 = 2nd most dominant, etc.
+# IF the CLI flag is specified, it will override this value.
+source_color_index = 0
+
+[config.wallpaper]
+# Whether to set the wallpaper or not
+set = true
+
+# The base command to run for applying the wallpaper.
+# Keywords like {{ image }} or anything that works inside of hooks works here.
+# You could also set a static color if you use the color keywords and the wallpaper setter supports it.
+command = "awww img --transition-type center {{ image }}"
+
+# For example, killing the wallpaper daemon. Usage is like a normal hook.
+# pre_hook = ""
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
+
+[templates.mango]
+input_path = '~/.config/matugen/templates/mango.conf'
+output_path = '~/.config/mango/colors.conf'
+post_hook = 'mmsg dispatch reload_config'
+
+[templates.wlogout]
+input_path = '~/.config/matugen/templates/wlogout-colors.css'
+output_path = '~/.config/wlogout/colors.css'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/cava/themes/matugen'
+post_hook = 'pkill -USR1 cava'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-themes.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.steam]
+input_path = '~/.config/matugen/templates/steam.css'
+output_path = '~/.config/AdwSteamGtk/custom.css'
+post_hook = 'adwaita-steam-gtk -i'
+
+[templates.neovim]
+input_path = '~/.config/matugen/templates/nvim-colors.json'
+output_path = '~/.cache/matugen/nvim-colors.json'
+post_hook = "pkill -SIGUSR1 nvim"
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+# Qt themes
+[templates.color-scheme]
+input_path = '~/.config/matugen/templates/Qt-Matugen.colors'
+output_path = '~/.local/share/color-schemes/Matugen.colors'
+
+[templates.papirus-folder]
+input_path = '~/.config/matugen/templates/papirus-color'
+colors_to_compare = [
+  { name = "black", color = "#4f4f4f" },
+  { name = "blue", color = "#5294e2" },
+  { name = "bluegrey", color = "#607d8b" },
+  { name = "brown", color = "#ae8e6c" },
+  { name = "carmine", color = "#a30002" },
+  { name = "cyan", color = "#00bcd4" },
+  { name = "darkcyan", color = "#45abb7" },
+  { name = "deeporange", color = "#eb6637" },
+  { name = "green", color = "#87b158" },
+  { name = "grey", color = "#8e8e8e" },
+  { name = "indigo", color = "#5c6bc0" },
+  { name = "magenta", color = "#ca71df" },
+  { name = "nordic", color = "#81a1c1" },
+  { name = "orange", color = "#ee923a" },
+  { name = "palebrown", color = "#d1bfae" },
+  { name = "paleorange", color = "#eeca8f" },
+  { name = "pink", color = "#f06292" },
+  { name = "red", color = "#e25252" },
+  { name = "teal", color = "#16a085" },
+  { name = "violet", color = "#7e57c2" },
+  { name = "white", color = "#e4e4e4" },
+  { name = "yaru", color = "#676767" },
+  { name = "yellow", color = "#f9bd30" },
+]
+compare_to = "{{ colors.primary.default.hex }}"
+post_hook = 'nohup sudo -n papirus-folders -C {{ closest_color }} -u > /dev/null 2>&1 &'
+index = 1
+
+[templates.spotify]
+input_path = '~/.config/matugen/templates/spicetify.ini'
+output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
+post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
+
+# Defaults to a value of 0 if unspecified, determines the order that each template is processed.
+# You can use index = n to force a particular template hook to run after everything else, and index = -n for before everything else
+# index = 0
+
+# Defaults to the type from CLI if unspecified.
+# One of `SchemeContent`, `SchemeExpressive`, `SchemeFidelity`, `SchemeFruitSalad`, `SchemeMonochrome`,
+# `SchemeNeutral`, `SchemeRainbow`, `SchemeTonalSpot`, `SchemeVibrant`, `SchemeSmart`
+type = "SchemeContent"
+
+# For testing of the `--continue-on-error` flag
+# [templates.ishoulderror]
+# Relative paths will be resolved from the path `config.toml` is in.
+# input_path = "./error-testing.txt"
+# output_path = "./a/error-testing.txt"
+
+# This will use a different input path depending on what mode you use.
+# input_path_modes = { dark = "./colors.whatever-extension", light = "./colors.whatever-extension" }
+
+# This will compare all of the colors inside the array with the color you set as `compare_to`, and returns the closest color to it.
+# You can then use `{{closest_color}}` inside hooks.
+# colors_to_compare = [
+#  { name = "black", color = "#000000" },
+#  { name = "red", color = "#ff0000" },
+#  { name = "maroon", color = "#800000" },
+#  { name = "yellow", color = "#ffff00" },
+#  { name = "olive", color = "#808000" },
+#  { name = "lime", color = "#00ff00" },
+#  { name = "green", color = "#008000" },
+#  { name = "aqua", color = "#00ffff" },
+#  { name = "teal", color = "#008080" },
+#  { name = "blue", color = "#0000ff" },
+#  { name = "navy", color = "#000080" },
+#  { name = "fuchsia", color = "#ff00ff" },
+#  { name = "purple", color = "#800080" },
+#]
+# compare_to = "{{colors.primary.default.hex}}"
+
+# Runs before the template is exported. You can use keywords here.
+# If you want the command to be async, add an & symbol to the end of the command on unix.
+# pre_hook = 'echo "source color {{colors.source_color.default.hex}}, source image {{image}}, closest color {{closest_color}}"'
+# Runs after the template is exported. You can use keywords here.
+# If you want the command to be async, add an & symbol to the end of the command on unix.
+# post_hook = 'echo "after gen"'
+
+# For overriding the prefix for a specific template only
+expr_prefix = "{{"
+expr_postfix = "}}"
+
+# Only hex values
+# https://m3.material.io/styles/color/advanced/adjust-existing-colors#1cc12e43-237b-45b9-8fe0-9a3549c1f61e
+# If you want to use the original color without any harmonization, add `_source` after the name like: `{{ color_source }}`
+# Example: To use the original red color you would use `{{ red_source }}` instead of `{{ red }}`
+
+# If you don't want to use the other colors that are automatically generated (on_color, on_color_container) you can just import a custom json with the colors instead.
+# For an example of importing json see: https://iniox.github.io/#matugen/usage/importing-json
+[config.custom_colors]
+red = "#ff0000"
+blue = "#0000ff"
+green = "#00ff00"
