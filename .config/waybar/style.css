@@ -1,0 +1,118 @@
+@import "colors.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#bar-group {
+  background-color: @surface;
+  border-radius: 24px;
+  padding: 0px 3px;
+}
+
+#widget-modules {
+  background-color: @tertiary_container;
+  color: @on_tertiary_container;
+  border: none;
+  border-radius: 24px;
+  margin: 4px 0px;
+  margin-left: 6px;
+  margin-right: 4px;
+  padding-right: 3px;
+}
+
+#pulseaudio {
+  padding-left: 7px;
+  padding-right: 3px;
+  border: none;
+  border-radius: 8px;
+}
+
+#mpris.playing {
+  font-family: "JetBrainsMono Nerd Font", "Sarasa Mono J", sans-serif;
+  margin-right: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#mpris.paused {
+  background-color: transparent;
+}
+#mpris.stopped {
+  background-color: transparent;
+}
+
+#custom-power {
+  background-color: @red_container;
+  border: none;
+  border-radius: 24px;
+  color: @on_red_container;
+  margin: 4px 0px;
+  margin-right: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#power-profiles-daemon {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#network {
+    padding-left: 7px;
+}
+
+#tray {
+    color: @on_surface;
+    padding: 0px 7px;
+}
+
+#clock {
+    background-color: @primary_container;
+    color: @on_primary_container;
+    margin: 4px 0px;
+    margin-left: 2px;
+    margin-right: 8px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border: none;
+    border-radius: 24px;
+}
+
+window#waybar {
+  background-color: @transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#workspaces {
+  padding-right: 3px;
+  border: none;
+}
+
+/* Workspaces that have windows in but not currently focused */
+#workspaces button {
+  padding: 0px 4px;
+  background-color: transparent;
+  color: @on_surface;
+  transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: min-width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+}
+
+/* Currently focused workspace */
+#workspaces button.active,
+#workspaces button.active.empty {
+  background-image: linear-gradient(90deg, @primary_container 0%, @tertiary_container 90%);
+  color: @shadow;
+  padding: 0px 15px;
+  border-radius: 24px;
+  margin: 4px 0px;
+}
+
+#workspaces button.empty {
+  background-color: transparent;
+  color: @surface_container_highest;
+}
