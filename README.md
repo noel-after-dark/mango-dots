@@ -2,7 +2,7 @@
 
 todo list
 
-wallpaper picker
+wallpaper picker script
 notification module
 wallhaven widgets maybe if i'm smart enough to make that
 
