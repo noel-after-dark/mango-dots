@@ -4,7 +4,7 @@ todo list
 
 expand animation
 
-wallpaper picker script
+wallpaper picker script -- done
 
 notification module
 
