@@ -11,7 +11,7 @@ fallback_color = "#ffbf9b"
 # Which color to choose if multiple good colors were found from an image.
 # choices: [darkness, lightness, saturation, less-saturation, value, closest-to-fallback]
 # The cli flag will override this if used.
-prefer = "closest-to-fallback"
+prefer = "lightness"
 
 # Enables caching which will cache the colorscheme, custom colors, etc. into a cache folder located in
 # Windows: C:\Users\user\AppData\Roaming\InioX\matugen\cache\images\<file>
@@ -40,7 +40,7 @@ block_postfix = "*>"
 # Value from -1 to 1.
 # -1 represents minimum contrast, 0 represents standard (i.e. the design as spec'd),
 # and 1 represents maximum contrast.
-contrast = 1
+contrast = 0
 
 # Will set the source color index just like the `--source-color-index` CLI flag (0 - 4).
 # 0 = most dominant, 1 = 2nd most dominant, etc.
@@ -121,7 +121,7 @@ post_hook = 'pkill -SIGUSR2 waybar'
 input_path = '~/.config/matugen/templates/Qt-Matugen.colors'
 output_path = '~/.local/share/color-schemes/Matugen.colors'
 
-[templates.papirus-folder]
+[templates.papirus-folders]
 input_path = '~/.config/matugen/templates/papirus-color'
 colors_to_compare = [
   { name = "black", color = "#4f4f4f" },
@@ -149,13 +149,21 @@ colors_to_compare = [
   { name = "yellow", color = "#f9bd30" },
 ]
 compare_to = "{{ colors.primary.default.hex }}"
-post_hook = 'nohup sudo -n papirus-folders -C {{ closest_color }} -u > /dev/null 2>&1 &'
+post_hook = 'nohup sudo -n papirus-folders -C {{ closest_color }} --theme Papirus-Dark -u > /dev/null 2>&1 &'
 index = 1
 
 [templates.spotify]
 input_path = '~/.config/matugen/templates/spicetify.ini'
 output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
 post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
+
+[templates.fish]
+input_path = '~/.config/matugen/templates/fish-colors.theme'
+output_path = '~/.config/fish/themes/matugen.theme'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'
 
 # Defaults to a value of 0 if unspecified, determines the order that each template is processed.
 # You can use index = n to force a particular template hook to run after everything else, and index = -n for before everything else
