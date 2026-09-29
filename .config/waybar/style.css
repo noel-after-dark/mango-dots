@@ -13,8 +13,8 @@
 }
 
 #widget-modules {
-  background-color: @tertiary_container;
-  color: @on_tertiary_container;
+  background-color: @tertiary;
+  color: @on_tertiary;
   border: none;
   border-radius: 24px;
   margin: 4px 0px;
@@ -45,10 +45,10 @@
 }
 
 #custom-power {
-  background-color: @red_container;
+  background-color: @red;
   border: none;
   border-radius: 24px;
-  color: @on_red_container;
+  color: @on_red;
   margin: 4px 0px;
   margin-right: 2px;
   padding-left: 7px;
@@ -70,8 +70,8 @@
 }
 
 #clock {
-    background-color: @primary_container;
-    color: @on_primary_container;
+    background-color: @primary;
+    color: @on_primary;
     margin: 4px 0px;
     margin-left: 2px;
     margin-right: 8px;
@@ -105,8 +105,8 @@ window#waybar {
 /* Currently focused workspace */
 #workspaces button.active,
 #workspaces button.active.empty {
-  background-image: linear-gradient(90deg, @primary_container 0%, @tertiary_container 90%);
-  color: @shadow;
+  background-image: linear-gradient(90deg, @primary 0%, @tertiary 90%);
+  color: @on_primary;
   padding: 0px 15px;
   border-radius: 24px;
   margin: 4px 0px;
