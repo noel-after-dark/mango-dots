@@ -14,7 +14,7 @@ SELECTED_SCHEME=$(echo -e "$SCHEMES" | rofi -dmenu -i -p "M3 Scheme")
 [[ -z "$SELECTED_SCHEME" ]] && exit 0
 
 # Apply the wallpaper
-awww img "$WALLPAPER" --transition-type random --transition-fps 60
+awww img "$WALLPAPER" --transition-type center --transition-fps 60
 
 # Let matugen generate the palettes
 matugen image "$WALLPAPER" -j hex -t "$SELECTED_SCHEME" -m "dark"
