@@ -67,18 +67,13 @@
     },
     {
       "type": "packages",
-      "key": "│ ├󰏗 ",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "shell",
-      "key": "└ └󰞷 ",
+      "key": "└ └󰏗 ",
       "keyColor": "yellow"
     },
     "break",
     {
-      "type": "de",
-      "key": "󰧨  DE",
+      "type": "wm",
+      "key": "󰧨  WM",
       "keyColor": "blue"
     },
     {
@@ -87,8 +82,8 @@
       "keyColor": "blue"
     },
     {
-      "type": "wm",
-      "key": "│ ├󱂬 ",
+      "type": "shell",
+      "key": "│ ├󰞷 ",
       "keyColor": "blue"
     },
     {
