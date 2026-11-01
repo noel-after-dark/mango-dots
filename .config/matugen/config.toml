@@ -11,7 +11,7 @@ fallback_color = "#ffbf9b"
 # Which color to choose if multiple good colors were found from an image.
 # choices: [darkness, lightness, saturation, less-saturation, value, closest-to-fallback]
 # The cli flag will override this if used.
-prefer = "lightness"
+prefer = "closest-to-fallback"
 
 # Enables caching which will cache the colorscheme, custom colors, etc. into a cache folder located in
 # Windows: C:\Users\user\AppData\Roaming\InioX\matugen\cache\images\<file>
@@ -97,14 +97,15 @@ input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
 post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
 
+
+[templates.ags]
+input_path = '~/.config/matugen/templates/ags.scss'
+output_path = '~/.config/ags/colors.scss'
+post_hook = 'pkill -SIGUSR2 ags'
+
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
-
-[templates.steam]
-input_path = '~/.config/matugen/templates/steam.css'
-output_path = '~/.config/AdwSteamGtk/custom.css'
-post_hook = 'adwaita-steam-gtk -i'
 
 [templates.neovim]
 input_path = '~/.config/matugen/templates/nvim-colors.json'
@@ -157,9 +158,9 @@ input_path = '~/.config/matugen/templates/spicetify.ini'
 output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
 post_hook = 'pgrep -x spicetify > /dev/null || spicetify apply -n'
 
-[templates.fish]
-input_path = '~/.config/matugen/templates/fish-colors.theme'
-output_path = '~/.config/fish/themes/matugen.theme'
+# [templates.fish]
+# input_path = '~/.config/matugen/templates/fish-colors.theme'
+# output_path = '~/.config/fish/themes/matugen.theme'
 
 [templates.starship]
 input_path = '~/.config/matugen/templates/starship-colors.toml'
